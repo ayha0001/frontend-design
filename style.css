@@ -1,4 +1,22 @@
 article {
-    max-width: 65ch;
-    margin-inline: auto;
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(2rem, 1fr) /* luft venstre for breakout */
+    [content-start] min(65ch, 100%) [content-end]
+    minmax(2rem, 1fr) [full-end]; /* luft højre for breakout */
+}
+
+article > * {
+  grid-column: content-start / content-end;
+}
+
+article img {
+  grid-column: full-start / full-end;
+}
+
+article blockquote {
+  grid-column: full-start / full-end; /* bred zone med luft */
+  max-width: 85ch;
+  justify-self: center;
+  line-height: 1.6;
 }
